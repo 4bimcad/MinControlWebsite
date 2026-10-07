@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MinControl — Gestión simple para minería</title>
+<meta name="description" content="MinControl: Dashboard, producción, ingresos, gastos, trabajadores y caja chica en una sola aplicación. Funciona 100% offline. Prueba gratis 14 días.">
+<meta property="og:title" content="MinControl — Gestión simple para minería">
+<meta property="og:description" content="MinControl: Dashboard, producción, ingresos, gastos, trabajadores y caja chica en una sola aplicación. Funciona 100% offline. Prueba gratis 14 días.">
+<meta property="og:image" content="img/og.jpg">
+<meta property="og:url" content="">
+<meta property="og:site_name" content="MinControl">
+<meta property="og:locale" content="es_LA">
+<link rel="icon" type="image/png" href="img/logo.png">
+<meta name="theme-color" content="#2563eb">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+<!-- Iconos: Flaticon UIcons (gratis, requieren atribución — ver footer) -->
+<link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.6.0/uicons-regular-rounded/css/uicons-regular-rounded.css">
+<link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.6.0/uicons-brands/css/uicons-brands.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"MinControl","applicationCategory":"BusinessApplication","operatingSystem":"Web","inLanguage":"es","offers":[{"@type":"Offer","name":"Prueba 14 días","price":"0","priceCurrency":"PEN"},{"@type":"Offer","name":"Licencia 120 días","price":"79","priceCurrency":"PEN"},{"@type":"Offer","name":"Licencia 1 año","price":"99","priceCurrency":"PEN"},{"@type":"Offer","name":"Licencia permanente","price":"169","priceCurrency":"PEN"}]}</script>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>tailwind.config={theme:{extend:{fontFamily:{sans:['Inter','system-ui','sans-serif']}}}}</script>
+</head>
+<body class="bg-white font-sans text-slate-700 antialiased">
+
+<header class="sticky top-0 z-30 border-b border-blue-100 bg-white/90 backdrop-blur">
+ <div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-3">
+  <a href="index.html" class="flex items-center gap-2 text-xl font-normal tracking-tight text-slate-900"><img src="img/logo.png" alt="" width="36" height="36" class="h-9 w-9 rounded-xl">MinControl</a>
+  <nav class="hidden items-center gap-1 text-sm font-medium text-slate-600 xl:flex" aria-label="Principal">
+   <a href="#funciones" data-nav class="rounded-lg px-3 py-1.5 hover:text-blue-600">Funciones</a>
+   <a href="#para-quien" data-nav class="rounded-lg px-3 py-1.5 hover:text-blue-600">Para quién</a>
+   <a href="#dispositivos" data-nav class="rounded-lg px-3 py-1.5 hover:text-blue-600">Dispositivos</a>
+   <a href="#licencias" data-nav class="rounded-lg px-3 py-1.5 hover:text-blue-600">Licencias</a>
+   <a href="#como-comprar" data-nav class="rounded-lg px-3 py-1.5 hover:text-blue-600">Cómo comprar</a>
+   <a href="#videos" data-nav class="rounded-lg px-3 py-1.5 hover:text-blue-600">Videos</a>
+   <a href="#faq" data-nav class="rounded-lg px-3 py-1.5 hover:text-blue-600">FAQ</a>
+  </nav>
+  <div class="flex items-center gap-2">
+   <a target="_blank" rel="noopener noreferrer" data-app href="#" class="items-center justify-center gap-3 rounded-2xl font-bold transition focus-visible:outline focus-visible:outline-4 focus-visible:outline-offset-2 focus-visible:outline-blue-300 bg-gradient-to-r from-blue-600 to-blue-500 text-white shadow-xl shadow-blue-600/30 hover:from-blue-700 hover:to-blue-600 hover:-translate-y-0.5 hidden py-2 px-4 text-sm sm:inline-flex"><i class="fi fi-rr-rocket-lunch"></i> Probar gratis</a>
+   <button id="menuBtn" aria-label="Abrir menú" aria-expanded="false" aria-controls="menuMob" class="grid h-11 w-11 place-items-center rounded-xl border border-blue-100 text-xl text-blue-700 xl:hidden"><i class="fi fi-rr-menu-burger"></i></button>
+  </div>
+ </div>
+ <nav id="menuMob" class="hidden border-t border-blue-100 bg-white px-5 pb-4 xl:hidden" aria-label="Menú móvil">
+  <a href="#funciones" data-nav class="block border-b border-blue-50 px-2 py-3 font-medium">Funciones</a>
+  <a href="#para-quien" data-nav class="block border-b border-blue-50 px-2 py-3 font-medium">Para quién</a>
+  <a href="#dispositivos" data-nav class="block border-b border-blue-50 px-2 py-3 font-medium">Dispositivos</a>
+  <a href="#licencias" data-nav class="block border-b border-blue-50 px-2 py-3 font-medium">Licencias</a>
+  <a href="#como-comprar" data-nav class="block border-b border-blue-50 px-2 py-3 font-medium">Cómo comprar</a>
+  <a href="#videos" data-nav class="block border-b border-blue-50 px-2 py-3 font-medium">Videos</a>
+  <a href="#faq" data-nav class="block px-2 py-3 font-medium">FAQ</a>
+  <a target="_blank" rel="noopener noreferrer" data-app href="#" class="inline-flex items-center justify-center gap-3 rounded-2xl px-7 py-4 text-base font-bold transition focus-visible:outline focus-visible:outline-4 focus-visible:outline-offset-2 focus-visible:outline-blue-300 bg-gradient-to-r from-blue-600 to-blue-500 text-white shadow-xl shadow-blue-600/30 hover:from-blue-700 hover:to-blue-600 hover:-translate-y-0.5 mt-2 w-full"><i class="fi fi-rr-rocket-lunch"></i> ABRIR Y PROBAR GRATIS</a>
+  <a target="_blank" rel="noopener noreferrer" data-wa href="https://wa.me/51913090906?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20MinControl.%20Mi%20c%C3%B3digo%20de%20dispositivo%20es%3A%20" class="inline-flex items-center justify-center gap-3 rounded-2xl px-7 py-4 text-base font-bold transition focus-visible:outline focus-visible:outline-4 focus-visible:outline-offset-2 focus-visible:outline-blue-300 bg-emerald-500 text-white hover:bg-emerald-600 shadow-lg mt-3 w-full"><i class="fi fi-brands-whatsapp"></i> WhatsApp</a>
+ </nav>
+</header>
+
+<!-- HERO -->
+<section class="relative overflow-hidden bg-gradient-to-b from-blue-50 to-white">
+ <div class="mx-auto grid max-w-6xl items-center gap-10 px-5 py-12 sm:py-20 lg:grid-cols-2">
+  <div>
+   <h1 class="text-5xl sm:text-6xl font-extrabold tracking-tight text-slate-900">Min<span class="text-blue-600">Control</span></h1>
+   <p class="mt-4 text-xl sm:text-2xl font-semibold text-slate-800">Gestión simple para minería</p>
+   <p class="mt-3 text-lg text-slate-600">Todo en una sola aplicación:</p>
+   <ul class="mt-3 flex flex-wrap gap-2"><li class="rounded-full border border-blue-100 bg-blue-50 px-4 py-1.5 text-sm font-medium text-blue-800 inline-flex items-center gap-1.5"><i class="fi fi-rr-check"></i> Dashboard</li><li class="rounded-full border border-blue-100 bg-blue-50 px-4 py-1.5 text-sm font-medium text-blue-800 inline-flex items-center gap-1.5"><i class="fi fi-rr-check"></i> Producción</li><li class="rounded-full border border-blue-100 bg-blue-50 px-4 py-1.5 text-sm font-medium text-blue-800 inline-flex items-center gap-1.5"><i class="fi fi-rr-check"></i> Ingresos</li><li class="rounded-full border border-blue-100 bg-blue-50 px-4 py-1.5 text-sm font-medium text-blue-800 inline-flex items-center gap-1.5"><i class="fi fi-rr-check"></i> Gastos</li><li class="rounded-full border border-blue-100 bg-blue-50 px-4 py-1.5 text-sm font-medium text-blue-800 inline-flex items-center gap-1.5"><i class="fi fi-rr-check"></i> Trabajadores</li><li class="rounded-full border border-blue-100 bg-blue-50 px-4 py-1.5 text-sm font-medium text-blue-800 inline-flex items-center gap-1.5"><i class="fi fi-rr-check"></i> Caja chica</li></ul>
+   <div class="mt-8">
+    <a target="_blank" rel="noopener noreferrer" data-app href="#" class="inline-flex items-center justify-center gap-3 rounded-2xl transition focus-visible:outline focus-visible:outline-4 focus-visible:outline-offset-2 focus-visible:outline-blue-300 w-full sm:w-auto px-8 py-5 text-lg sm:text-xl font-extrabold bg-gradient-to-r from-blue-600 to-blue-500 text-white shadow-xl shadow-blue-600/30 hover:from-blue-700 hover:to-blue-600 hover:-translate-y-0.5"><i class="fi fi-rr-rocket-lunch text-2xl"></i> ABRIR Y PROBAR GRATIS</a>
+    <p class="mt-4 font-extrabold text-blue-700">14 DÍAS GRATIS · SIN TARJETA · SIN PAGO</p>
+   </div>
+  </div>
+  <!-- Carrusel -->
+  <div id="car" class="relative mx-auto w-full max-w-xl select-none">
+   <div class="overflow-hidden rounded-3xl border-4 border-white bg-slate-200 shadow-2xl shadow-blue-900/20 ring-1 ring-blue-100">
+    <div id="track" class="flex transition-transform duration-500 ease-out">
+     <div class="relative w-full shrink-0"><img src="img/1 - Inicio.jpg" alt="Inicio en MinControl" class="aspect-video w-full object-cover" width="1024" height="576"><span class="absolute bottom-3 left-3 rounded-lg bg-blue-600 px-3 py-1 text-sm font-bold text-white">Inicio</span></div>
+     <div class="relative w-full shrink-0"><img src="img/2 - Produccion.jpg" alt="Producción en MinControl" class="aspect-video w-full object-cover" width="1024" height="576" loading="lazy"><span class="absolute bottom-3 left-3 rounded-lg bg-blue-600 px-3 py-1 text-sm font-bold text-white">Producción</span></div>
+     <div class="relative w-full shrink-0"><img src="img/3 - Ingresos.jpg" alt="Costos en MinControl" class="aspect-video w-full object-cover" width="1024" height="576" loading="lazy"><span class="absolute bottom-3 left-3 rounded-lg bg-blue-600 px-3 py-1 text-sm font-bold text-white">Ingresos</span></div>
+     <div class="relative w-full shrink-0"><img src="img/4 - Gastos.jpg" alt="Trabajadores en MinControl" class="aspect-video w-full object-cover" width="1024" height="576" loading="lazy"><span class="absolute bottom-3 left-3 rounded-lg bg-blue-600 px-3 py-1 text-sm font-bold text-white">Gastos</span></div>
+     <div class="relative w-full shrink-0"><img src="img/5 - Trabajadores.jpg" alt="Equipos en MinControl" class="aspect-video w-full object-cover" width="1024" height="576" loading="lazy"><span class="absolute bottom-3 left-3 rounded-lg bg-blue-600 px-3 py-1 text-sm font-bold text-white">Trabajadores</span></div>
+     <div class="relative w-full shrink-0"><img src="img/6 - Caja chica.jpg" alt="Insumos en MinControl" class="aspect-video w-full object-cover" width="1024" height="576" loading="lazy"><span class="absolute bottom-3 left-3 rounded-lg bg-blue-600 px-3 py-1 text-sm font-bold text-white">Caja chica</span></div>
+    </div>
+   </div>
+   <button id="prev" aria-label="Anterior" class="absolute left-2 top-1/2 grid h-10 w-10 -translate-y-1/2 place-items-center rounded-full bg-white/90 text-blue-700 shadow hover:bg-white"><i class="fi fi-rr-angle-left"></i></button>
+   <button id="next" aria-label="Siguiente" class="absolute right-2 top-1/2 grid h-10 w-10 -translate-y-1/2 place-items-center rounded-full bg-white/90 text-blue-700 shadow hover:bg-white"><i class="fi fi-rr-angle-right"></i></button>
+   <div id="dots" class="mt-4 flex justify-center gap-2"></div>
+  </div>
+ </div>
+</section>
+
+<div class="border-y border-blue-100 bg-white"><div class="mx-auto grid max-w-6xl grid-cols-2 gap-4 px-5 py-5 text-sm font-semibold text-slate-700 md:grid-cols-4">
+ <p class="flex items-center gap-2"><i class="fi fi-rr-gift text-lg text-blue-600"></i> Sin tarjeta ni pago</p>
+ <p class="flex items-center gap-2"><i class="fi fi-rr-plane-alt text-lg text-blue-600"></i> 100% offline, sin internet</p>
+ <p class="flex items-center gap-2"><i class="fi fi-rr-coins text-lg text-blue-600"></i> Pago único</p>
+ <p class="flex items-center gap-2"><i class="fi fi-rr-lock text-lg text-blue-600"></i> 1 licencia = 1 dispositivo</p>
+</div></div>
+
+<!-- Qué es + funciones -->
+<section id="funciones" class="py-16 sm:py-24 scroll-mt-20">
+ <div class="mx-auto max-w-6xl px-5">
+  <div class="max-w-2xl">
+   <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900">¿Qué es MinControl?</h2>
+   <p class="mt-4 text-lg">Es una aplicación para controlar las operaciones del día a día. <b class="text-slate-900">Está pensada para trabajar de forma sencilla, práctica y local.</b></p>
+  </div>
+  <h3 class="mt-14 text-2xl font-extrabold text-slate-900">Todo lo necesario para controlar tu operación</h3>
+  <div id="feat" class="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3"></div>
+ </div>
+</section>
+
+<!-- Para quién -->
+<section id="para-quien" class="py-16 sm:py-24 scroll-mt-20 bg-blue-50/60">
+ <div class="mx-auto max-w-6xl px-5">
+  <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900">¿Para quién es MinControl?</h2>
+  <p class="mt-4 max-w-3xl text-lg">MinControl nació con un enfoque especial en minería artesanal y pequeña minería, pero sus herramientas de control también pueden ser útiles en otras actividades productivas y operativas.</p>
+  <div class="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+   <div class="rounded-2xl border border-blue-100 bg-white p-6 shadow-sm ring-2 ring-blue-500"><div class="grid h-12 w-12 place-items-center rounded-xl bg-blue-50 text-2xl text-blue-600 mb-4"><i class="fi fi-rr-pickaxe"></i></div><h3 class="font-bold text-slate-900">Minería artesanal y pequeña minería</h3><p class="mt-2 text-sm">Propietarios, responsables de operación, administradores, encargados de producción y supervisores.</p></div>
+   <div class="rounded-2xl border border-blue-100 bg-white p-6 shadow-sm"><div class="grid h-12 w-12 place-items-center rounded-xl bg-blue-50 text-2xl text-blue-600 mb-4"><i class="fi fi-rr-building"></i></div><h3 class="font-bold text-slate-900">Construcción</h3><p class="mt-2 text-sm">Trabajadores, equipos, materiales, costos y producción.</p></div>
+   <div class="rounded-2xl border border-blue-100 bg-white p-6 shadow-sm"><div class="grid h-12 w-12 place-items-center rounded-xl bg-blue-50 text-2xl text-blue-600 mb-4"><i class="fi fi-rr-industry-windows"></i></div><h3 class="font-bold text-slate-900">Industria</h3><p class="mt-2 text-sm">Pequeñas operaciones de producción y control de recursos.</p></div>
+   <div class="rounded-2xl border border-blue-100 bg-white p-6 shadow-sm"><div class="grid h-12 w-12 place-items-center rounded-xl bg-blue-50 text-2xl text-blue-600 mb-4"><i class="fi fi-rr-settings"></i></div><h3 class="font-bold text-slate-900">Producción y operaciones</h3><p class="mt-2 text-sm">Control simple de la actividad diaria.</p></div>
+  </div>
+ </div>
+</section>
+
+<!-- Habla hispana + moneda + datos -->
+<section class="py-16 sm:py-24">
+ <div class="mx-auto grid max-w-6xl gap-12 px-5 lg:grid-cols-2">
+  <div>
+   <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900">Para usuarios de países de habla hispana</h2>
+   <p class="mt-4"><b class="text-slate-900">MinControl no está limitado a Perú.</b> Está pensado para personas, trabajadores y pequeñas empresas de cualquier país de habla hispana que necesitan una herramienta sencilla para controlar sus actividades, costos, producción y recursos.</p>
+   <div id="paises" class="mt-5 flex flex-wrap gap-2"></div>
+   <p class="mt-5 text-sm text-slate-500"><i class="fi fi-rr-coins"></i> La aplicación puede utilizarse con la moneda de cada país. La herramienta es universal; no está adaptada legalmente a cada país.</p>
+  </div>
+  <div class="rounded-3xl bg-gradient-to-br from-blue-700 to-blue-500 p-8 text-white shadow-xl">
+   <div class="mb-4 grid h-12 w-12 place-items-center rounded-xl bg-white/20 text-2xl"><i class="fi fi-rr-shield-check"></i></div>
+   <h2 class="text-3xl font-extrabold">Tus datos permanecen en tu dispositivo</h2>
+   <ul class="mt-5 space-y-3 text-blue-50">
+    <li class="flex gap-3"><i class="fi fi-rr-check mt-1"></i>Los datos se guardan localmente.</li>
+    <li class="flex gap-3"><i class="fi fi-rr-check mt-1"></i>Sin suscripción permanente.</li>
+    <li class="flex gap-3"><i class="fi fi-rr-check mt-1"></i>No depende de una plataforma en la nube.</li>
+    <li class="flex gap-3"><i class="fi fi-rr-check mt-1"></i>Tú controlas tus datos en tu dispositivo.</li>
+   </ul>
+  </div>
+ </div>
+</section>
+
+<!-- Dispositivos + teléfono -->
+<section id="dispositivos" class="py-16 sm:py-24 scroll-mt-20 bg-blue-50/60">
+ <div class="mx-auto max-w-6xl px-5">
+  <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900">Úsalo en el dispositivo que necesites</h2>
+  <p class="mt-4 max-w-2xl text-lg">MinControl funciona desde navegadores modernos y puede utilizarse en diferentes dispositivos.</p>
+  <div class="mt-6 flex flex-wrap gap-2"><span class="rounded-full border border-blue-100 bg-blue-50 px-4 py-1.5 text-sm font-medium text-blue-800">Windows</span><span class="rounded-full border border-blue-100 bg-blue-50 px-4 py-1.5 text-sm font-medium text-blue-800">Android</span><span class="rounded-full border border-blue-100 bg-blue-50 px-4 py-1.5 text-sm font-medium text-blue-800">iPhone / iPad</span><span class="rounded-full border border-blue-100 bg-blue-50 px-4 py-1.5 text-sm font-medium text-blue-800">macOS</span><span class="rounded-full border border-blue-100 bg-blue-50 px-4 py-1.5 text-sm font-medium text-blue-800">Linux</span><span class="rounded-full border border-blue-100 bg-blue-50 px-4 py-1.5 text-sm font-medium text-blue-800">PC</span><span class="rounded-full border border-blue-100 bg-blue-50 px-4 py-1.5 text-sm font-medium text-blue-800">Laptop</span><span class="rounded-full border border-blue-100 bg-blue-50 px-4 py-1.5 text-sm font-medium text-blue-800">Tablet</span><span class="rounded-full border border-blue-100 bg-blue-50 px-4 py-1.5 text-sm font-medium text-blue-800">Teléfono</span></div>
+  <div class="rounded-2xl border border-blue-100 bg-white p-6 shadow-sm mt-10">
+   <h3 class="flex items-center gap-3 text-2xl font-extrabold text-slate-900"><i class="fi fi-rr-smartphone text-blue-600"></i> También puedes usar MinControl en tu teléfono</h3>
+   <p class="mt-3">Para una mejor experiencia, abre MinControl con Google Chrome y podrás instalarlo directamente como una aplicación en tu dispositivo. No necesitas buscar ningún APK.</p>
+   <ol class="mt-6 grid gap-4 sm:grid-cols-3">
+    <li class="flex gap-3 rounded-xl bg-blue-50 p-4"><b class="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-blue-600 text-white">1</b>Abre MinControl en Google Chrome</li>
+    <li class="flex gap-3 rounded-xl bg-blue-50 p-4"><b class="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-blue-600 text-white">2</b>Instala la aplicación desde el navegador</li>
+    <li class="flex gap-3 rounded-xl bg-blue-50 p-4"><b class="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-blue-600 text-white">3</b>Abre MinControl directamente desde tu dispositivo</li>
+   </ol>
+  </div>
+ </div>
+</section>
+
+<!-- Prueba -->
+<section class="py-16 sm:py-24">
+ <div class="mx-auto max-w-3xl px-5 text-center">
+  <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900">Prueba MinControl durante 14 días</h2>
+  <p class="mt-4 text-lg">Abre MinControl, pruébalo durante 14 días y comprueba si se adapta a tu forma de trabajar.</p>
+  <div class="mt-5 flex flex-wrap justify-center gap-2"><span class="rounded-full border border-blue-100 bg-blue-50 px-4 py-1.5 text-sm font-medium text-blue-800">14 días gratis</span><span class="rounded-full border border-blue-100 bg-blue-50 px-4 py-1.5 text-sm font-medium text-blue-800">Sin tarjeta</span><span class="rounded-full border border-blue-100 bg-blue-50 px-4 py-1.5 text-sm font-medium text-blue-800">Sin pago</span><span class="rounded-full border border-blue-100 bg-blue-50 px-4 py-1.5 text-sm font-medium text-blue-800">Sin suscripción</span><span class="rounded-full border border-blue-100 bg-blue-50 px-4 py-1.5 text-sm font-medium text-blue-800">Sin compromiso</span></div>
+  <p class="mt-3 text-sm text-slate-500">La prueba no requiere tarjeta. Para comprar una licencia desde fuera de Perú, el pago se realiza con Mercado Pago.</p>
+  <a target="_blank" rel="noopener noreferrer" data-app href="#" class="inline-flex items-center justify-center gap-3 rounded-2xl transition focus-visible:outline focus-visible:outline-4 focus-visible:outline-offset-2 focus-visible:outline-blue-300 w-full sm:w-auto px-8 py-5 text-lg sm:text-xl font-extrabold bg-gradient-to-r from-blue-600 to-blue-500 text-white shadow-xl shadow-blue-600/30 hover:from-blue-700 hover:to-blue-600 hover:-translate-y-0.5 mt-8"><i class="fi fi-rr-rocket-lunch text-2xl"></i> ABRIR Y PROBAR GRATIS</a>
+  <h3 class="mt-14 text-2xl font-extrabold text-slate-900">Primero prueba. Después decides.</h3>
+  <ol class="mt-6 grid gap-3 text-left sm:grid-cols-2">
+   <li class="rounded-2xl border border-blue-100 bg-white shadow-sm flex gap-3 p-4"><b class="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-blue-600 text-white">1</b>Abre MinControl gratis</li>
+   <li class="rounded-2xl border border-blue-100 bg-white shadow-sm flex gap-3 p-4"><b class="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-blue-600 text-white">2</b>Utilízalo durante 14 días</li>
+   <li class="rounded-2xl border border-blue-100 bg-white shadow-sm flex gap-3 p-4"><b class="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-blue-600 text-white">3</b>Comprueba sus funciones</li>
+   <li class="rounded-2xl border border-blue-100 bg-white shadow-sm flex gap-3 p-4"><b class="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-blue-600 text-white">4</b>Si te resulta útil, activa una licencia</li>
+  </ol>
+ </div>
+</section>
+
+<!-- Licencias -->
+<section id="licencias" class="py-16 sm:py-24 scroll-mt-20 bg-blue-50/60">
+ <div class="mx-auto max-w-6xl px-5">
+  <div class="text-center"><h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900">Elige tu licencia</h2><p class="mt-3 font-bold text-blue-700">Pago único · Sin mensualidad · Sin suscripción</p></div>
+  <div class="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+   <div class="rounded-2xl border border-blue-100 bg-white p-6 shadow-sm flex flex-col"><h3 class="font-bold text-slate-900">Prueba gratis</h3><div class="mt-2 text-4xl font-extrabold text-slate-900">GRATIS</div><p class="font-semibold">14 días</p><ul class="my-4 flex-1 space-y-1 text-sm"><li>Acceso de prueba</li><li>Sin tarjeta</li><li>Sin pago</li></ul><a target="_blank" rel="noopener noreferrer" data-app href="#" class="inline-flex items-center justify-center gap-3 rounded-2xl py-4 font-bold transition focus-visible:outline focus-visible:outline-4 focus-visible:outline-offset-2 focus-visible:outline-blue-300 bg-gradient-to-r from-blue-600 to-blue-500 text-white shadow-xl shadow-blue-600/30 hover:from-blue-700 hover:to-blue-600 hover:-translate-y-0.5 px-3 text-sm"><i class="fi fi-rr-rocket-lunch"></i> ABRIR Y PROBAR GRATIS</a></div>
+   <div class="rounded-2xl border border-blue-100 bg-white p-6 shadow-sm flex flex-col"><h3 class="font-bold text-slate-900">Licencia 120 días</h3><div class="mt-2 text-4xl font-extrabold text-slate-900">S/ 79</div><p class="text-xs text-slate-500">≈ US$ 23 aprox.</p><p class="font-semibold">120 días de acceso</p><ul class="my-4 flex-1 space-y-1 text-sm"><li>Pago único</li></ul><a target="_blank" rel="noopener noreferrer" data-wa href="https://wa.me/51913090906?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20MinControl.%20Mi%20c%C3%B3digo%20de%20dispositivo%20es%3A%20" class="inline-flex items-center justify-center gap-3 rounded-2xl px-7 py-4 text-base font-bold transition focus-visible:outline focus-visible:outline-4 focus-visible:outline-offset-2 focus-visible:outline-blue-300 border-2 border-blue-600 text-blue-700 hover:bg-blue-50"><i class="fi fi-rr-key"></i> COMPRAR LICENCIA</a></div>
+   <div class="rounded-2xl bg-white p-6 relative flex flex-col border-2 border-blue-600 shadow-xl shadow-blue-600/20 lg:-translate-y-3"><span class="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-blue-600 px-4 py-1 text-xs font-extrabold text-white">RECOMENDADO</span><h3 class="font-bold text-slate-900">Licencia 1 año</h3><div class="mt-2 text-4xl font-extrabold text-blue-700">S/ 99</div><p class="text-xs text-slate-500">≈ US$ 29 aprox.</p><p class="font-semibold">1 año de acceso</p><ul class="my-4 flex-1 space-y-1 text-sm"><li>Pago único</li></ul><a target="_blank" rel="noopener noreferrer" data-wa href="https://wa.me/51913090906?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20MinControl.%20Mi%20c%C3%B3digo%20de%20dispositivo%20es%3A%20" class="inline-flex items-center justify-center gap-3 rounded-2xl px-7 py-4 text-base font-bold transition focus-visible:outline focus-visible:outline-4 focus-visible:outline-offset-2 focus-visible:outline-blue-300 bg-gradient-to-r from-blue-600 to-blue-500 text-white shadow-xl shadow-blue-600/30 hover:from-blue-700 hover:to-blue-600 hover:-translate-y-0.5"><i class="fi fi-rr-key"></i> COMPRAR LICENCIA</a></div>
+   <div class="rounded-2xl border border-blue-100 bg-white p-6 shadow-sm flex flex-col"><span class="mb-2 w-fit rounded-full bg-blue-100 px-3 py-1 text-xs font-extrabold text-blue-700">MEJOR VALOR</span><h3 class="font-bold text-slate-900">Licencia permanente</h3><div class="mt-2 text-4xl font-extrabold text-slate-900">S/ 169</div><p class="text-xs text-slate-500">≈ US$ 49 aprox.</p><p class="font-semibold">Acceso permanente</p><ul class="my-4 flex-1 space-y-1 text-sm"><li>Pago único</li></ul><a target="_blank" rel="noopener noreferrer" data-wa href="https://wa.me/51913090906?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20MinControl.%20Mi%20c%C3%B3digo%20de%20dispositivo%20es%3A%20" class="inline-flex items-center justify-center gap-3 rounded-2xl px-7 py-4 text-base font-bold transition focus-visible:outline focus-visible:outline-4 focus-visible:outline-offset-2 focus-visible:outline-blue-300 border-2 border-blue-600 text-blue-700 hover:bg-blue-50"><i class="fi fi-rr-key"></i> COMPRAR LICENCIA</a></div>
+  </div>
+  <p class="mt-5 text-center text-sm text-slate-500">Precios mostrados en soles peruanos (S/). Equivalente en dólares aproximado (1 USD = S/ 3.44). Las licencias no cambian las funciones: solo el tiempo de acceso. Desde fuera de Perú, el pago se realiza con Mercado Pago.</p>
+  <div class="mx-auto mt-6 max-w-2xl rounded-2xl bg-slate-900 p-5 text-center text-white"><p class="flex items-center justify-center gap-3 text-xl font-extrabold"><i class="fi fi-rr-lock"></i> 1 licencia = 1 dispositivo</p><p class="mt-1 text-sm text-slate-300">La licencia queda vinculada al dispositivo donde se activa.</p></div>
+ </div>
+</section>
+
+<!-- Cómo comprar -->
+<section id="como-comprar" class="py-16 sm:py-24 scroll-mt-20">
+ <div class="mx-auto max-w-6xl px-5">
+  <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900">¿Cómo comprar una licencia?</h2>
+  <ol class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+   <li class="rounded-2xl border border-blue-100 bg-white p-6 shadow-sm"><b class="text-blue-600">01</b><h3 class="mt-1 font-bold text-slate-900">Obtén tu código de dispositivo</h3><p class="mt-1 text-sm">Abre MinControl y copia el código de tu dispositivo.</p></li>
+   <li class="rounded-2xl border border-blue-100 bg-white p-6 shadow-sm"><b class="text-blue-600">02</b><h3 class="mt-1 font-bold text-slate-900">Escríbenos por WhatsApp</h3><p class="mt-1 text-sm">Envía el código de dispositivo.</p></li>
+   <li class="rounded-2xl border border-blue-100 bg-white p-6 shadow-sm"><b class="text-blue-600">03</b><h3 class="mt-1 font-bold text-slate-900">Recibe los datos de pago</h3><p class="mt-1 text-sm">De la licencia elegida. Desde fuera de Perú, el pago se realiza con Mercado Pago.</p></li>
+   <li class="rounded-2xl border border-blue-100 bg-white p-6 shadow-sm"><b class="text-blue-600">04</b><h3 class="mt-1 font-bold text-slate-900">Realiza el pago</h3><p class="mt-1 text-sm">Paga el período elegido.</p></li>
+   <li class="rounded-2xl border border-blue-100 bg-white p-6 shadow-sm"><b class="text-blue-600">05</b><h3 class="mt-1 font-bold text-slate-900">Recibe tu licencia</h3><p class="mt-1 text-sm">Tras confirmar el pago, recibes tu código de activación.</p></li>
+  </ol>
+  <div class="mt-8 text-center"><a target="_blank" rel="noopener noreferrer" data-wa href="https://wa.me/51913090906?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20MinControl.%20Mi%20c%C3%B3digo%20de%20dispositivo%20es%3A%20" class="inline-flex items-center justify-center gap-3 rounded-2xl transition focus-visible:outline focus-visible:outline-4 focus-visible:outline-offset-2 focus-visible:outline-blue-300 w-full sm:w-auto px-8 py-5 text-lg sm:text-xl font-extrabold bg-emerald-500 text-white hover:bg-emerald-600 shadow-lg"><i class="fi fi-brands-whatsapp text-2xl"></i> COMPRAR LICENCIA POR WHATSAPP</a><p class="mt-3 text-sm text-slate-500">+51 913 090 906</p></div>
+ </div>
+</section>
+
+<!-- Videos -->
+<section id="videos" class="py-16 sm:py-24 scroll-mt-20 bg-blue-50/60">
+ <div class="mx-auto max-w-4xl px-5 text-center">
+  <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900">Aprende a usar MinControl</h2>
+  <p class="mx-auto mt-4">Mira nuestros videos para conocer las funciones de MinControl, aprender a utilizar la aplicación y descubrir diferentes formas de organizar y controlar tu operación.</p>
+  <div id="ytBox" class="mt-8 aspect-video overflow-hidden rounded-3xl border-4 border-white bg-gradient-to-br from-blue-700 to-blue-500 shadow-2xl shadow-blue-900/20">
+   <div class="grid h-full place-items-center text-white"><div><i class="fi fi-rr-play-circle text-6xl"></i><p class="mt-3 font-bold">Video de uso próximamente</p></div></div>
+  </div>
+  <div class="mt-6 flex flex-wrap justify-center gap-3"><a id="ytBtn" class="inline-flex items-center justify-center gap-3 rounded-2xl px-7 py-4 text-base font-bold transition focus-visible:outline focus-visible:outline-4 focus-visible:outline-offset-2 focus-visible:outline-blue-300 border-2 border-blue-600 text-blue-700 hover:bg-blue-50 pointer-events-none opacity-60"><i class="fi fi-brands-youtube"></i> VER EN YOUTUBE</a><a id="ttBtn" class="inline-flex items-center justify-center gap-3 rounded-2xl px-7 py-4 text-base font-bold transition focus-visible:outline focus-visible:outline-4 focus-visible:outline-offset-2 focus-visible:outline-blue-300 border-2 border-blue-600 text-blue-700 hover:bg-blue-50 pointer-events-none opacity-60"><i class="fi fi-brands-tik-tok"></i> VER EN TIKTOK</a></div>
+ </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="py-16 sm:py-24 scroll-mt-20">
+ <div class="mx-auto max-w-3xl px-5">
+  <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900">Preguntas frecuentes</h2>
+  <div id="faq" class="mt-8 space-y-3"></div>
+ </div>
+</section>
+
+<!-- CTA final -->
+<section class="px-5 pb-16">
+ <div class="mx-auto max-w-5xl rounded-3xl bg-gradient-to-br from-blue-700 to-blue-500 px-6 py-14 text-center text-white shadow-2xl shadow-blue-600/30">
+  <h2 class="text-3xl sm:text-4xl font-extrabold">Prueba MinControl gratis durante 14 días</h2>
+  <p class="mx-auto mt-4 max-w-xl text-blue-50">Sin tarjeta. Sin pago. Sin suscripción. Abre la aplicación y comprueba si MinControl puede ayudarte a organizar mejor tu operación.</p>
+  <a target="_blank" rel="noopener noreferrer" data-app href="#" class="inline-flex items-center justify-center gap-3 rounded-2xl transition focus-visible:outline focus-visible:outline-4 focus-visible:outline-offset-2 focus-visible:outline-blue-300 w-full sm:w-auto px-8 py-5 text-lg sm:text-xl font-extrabold bg-white text-blue-700 shadow-xl hover:bg-blue-50 hover:-translate-y-0.5 mt-8"><i class="fi fi-rr-rocket-lunch text-2xl"></i> ABRIR Y PROBAR GRATIS</a>
+  <p class="mt-4 font-extrabold">14 DÍAS GRATIS · SIN TARJETA · SIN PAGO</p>
+ </div>
+ <p class="mt-8 text-center">¿Ya probaste MinControl y quieres continuar?<br><a target="_blank" rel="noopener noreferrer" data-wa href="https://wa.me/51913090906?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20MinControl.%20Mi%20c%C3%B3digo%20de%20dispositivo%20es%3A%20" class="inline-flex items-center justify-center gap-3 rounded-2xl px-7 py-4 text-base font-bold transition focus-visible:outline focus-visible:outline-4 focus-visible:outline-offset-2 focus-visible:outline-blue-300 bg-emerald-500 text-white hover:bg-emerald-600 shadow-lg mt-3"><i class="fi fi-brands-whatsapp text-xl"></i> COMPRAR LICENCIA</a></p>
+</section>
+
+<footer class="border-t border-blue-100 bg-slate-50 pb-28 pt-10 text-sm md:pb-10 text-slate-500">
+ <div class="mx-auto max-w-6xl px-5">
+  <b class="text-slate-900">MinControl</b><br>Gestión simple para minería, construcción, industria y operaciones.<br>
+  Desarrollado por INFOSET · Marca de INCAJATA S.A.C. (RUC: 20614558491)<br>
+  <a class="text-blue-700 hover:underline" href="https://infoset.org.pe">infoset.org.pe</a> · +51 913 090 906
+  <p class="mt-4 text-xs">Iconos: <a class="underline" href="https://www.flaticon.com/uicons">Flaticon UIcons</a>.</p>
+ </div>
+</footer>
+
+<div id="bar" class="fixed inset-x-0 bottom-0 z-40 flex translate-y-full gap-2 border-t border-blue-100 bg-white/95 p-3 pb-[calc(0.75rem+env(safe-area-inset-bottom))] backdrop-blur transition md:hidden">
+ <a target="_blank" rel="noopener noreferrer" data-app href="#" class="inline-flex items-center justify-center gap-3 rounded-2xl px-7 text-base font-bold transition focus-visible:outline focus-visible:outline-4 focus-visible:outline-offset-2 focus-visible:outline-blue-300 bg-gradient-to-r from-blue-600 to-blue-500 text-white shadow-xl shadow-blue-600/30 hover:from-blue-700 hover:to-blue-600 hover:-translate-y-0.5 flex-1 py-3"><i class="fi fi-rr-rocket-lunch"></i> PROBAR GRATIS</a>
+ <a target="_blank" rel="noopener noreferrer" data-wa href="https://wa.me/51913090906?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20MinControl.%20Mi%20c%C3%B3digo%20de%20dispositivo%20es%3A%20" aria-label="WhatsApp" class="inline-flex items-center justify-center gap-3 rounded-2xl text-base font-bold transition focus-visible:outline focus-visible:outline-4 focus-visible:outline-offset-2 focus-visible:outline-blue-300 bg-emerald-500 text-white hover:bg-emerald-600 shadow-lg px-4 py-3"><i class="fi fi-brands-whatsapp text-xl"></i></a>
+</div>
+
+<script>
+var mb=document.getElementById("menuBtn"),mm=document.getElementById("menuMob");
+mb.onclick=function(){var o=mm.classList.toggle("hidden")===false;mb.setAttribute("aria-expanded",o)};
+mm.querySelectorAll("a").forEach(function(a){a.addEventListener("click",function(){mm.classList.add("hidden");mb.setAttribute("aria-expanded",false)})});
+// ===== CONFIGURACIÓN =====
+var APP_URL="https://mincontrolapp.infoset.org.pe";
+var YT_ID="";  // ID del video de YouTube (ej. "dQw4w9WgXcQ"); vacío = se muestra el marcador
+var YT_URL=""; // enlace al canal de YouTube
+var TT_URL=""; // enlace a TikTok
+// =========================
+var nl=[].slice.call(document.querySelectorAll("[data-nav]"));
+var AC=["bg-blue-50","text-blue-700","font-semibold","rounded-lg"];
+function setA(id){nl.forEach(function(a){var on=a.getAttribute("href")==="#"+id;AC.forEach(function(c){a.classList.toggle(c,on)});if(on)a.setAttribute("aria-current","true");else a.removeAttribute("aria-current")})}
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)setA(e.target.id)})},{rootMargin:"-30% 0px -60% 0px"});
+nl.map(function(a){return a.getAttribute("href").slice(1)}).filter(function(v,i,r){return r.indexOf(v)===i}).forEach(function(id){var el=document.getElementById(id);if(el)io.observe(el)});
+var bar=document.getElementById("bar");
+function onS(){bar.classList.toggle("translate-y-full",window.scrollY<600);if(window.scrollY<300)setA("")}
+window.addEventListener("scroll",onS,{passive:true});onS();
+if(YT_ID){document.getElementById("ytBox").innerHTML='<iframe class="h-full w-full" src="https://www.youtube-nocookie.com/embed/'+YT_ID+'" title="Cómo usar MinControl" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'}
+[["ytBtn",YT_URL],["ttBtn",TT_URL]].forEach(function(x){var el=document.getElementById(x[0]);if(x[1]){el.href=x[1];el.target="_blank";el.rel="noopener";el.classList.remove("pointer-events-none","opacity-60")}});
+document.querySelectorAll("[data-app]").forEach(function(a){a.href=APP_URL});
+
+var F=[["chart-pie","Control de producción","Registro y seguimiento de la producción."],["coins","Ingresos y gastos","Registra lo que entra y lo que sale de tu operación."],["users","Trabajadores","Registro y control de trabajadores."],["wallet","Caja chica","Control de los pequeños gastos del día a día."],["gem","Precios de metales","Registro de precios de metales usados en los cálculos."],["calendar-check","Asistencia","Marca si cada trabajador trabajó ese día o no."],["file-export","Reportes","Generación de reportes en PDF y Excel."],["apps","Dashboard","Resumen visual de la información relevante."],["dollar","Tu moneda y USD","Trabaja con la moneda nacional de tu país y con dólares (USD)."],["plane-alt","100% offline","Funciona sin internet: úsalo donde no hay señal."]];
+document.getElementById("feat").innerHTML=F.map(function(f){return '<div class="rounded-2xl border border-blue-100 bg-white p-6 shadow-sm"><div class="grid h-12 w-12 place-items-center rounded-xl bg-blue-50 text-2xl text-blue-600 mb-4"><i class="fi fi-rr-'+f[0]+'"></i></div><h3 class="font-bold text-slate-900">'+f[1]+'</h3><p class="mt-1 text-sm">'+f[2]+'</p></div>'}).join("");
+
+document.getElementById("paises").innerHTML="Perú,Bolivia,Colombia,Ecuador,Chile,Argentina,México,Guatemala,Honduras,El Salvador,Nicaragua,Costa Rica,Panamá,Paraguay,Uruguay,República Dominicana,España".split(",").map(function(p){return '<span class="rounded-full border border-blue-100 bg-blue-50 px-4 py-1.5 text-sm font-medium text-blue-800">'+p+'</span>'}).join("");
+
+var Q=[["¿Cuánto dura la prueba gratuita?","La prueba gratuita dura 14 días."],["¿Necesito una tarjeta?","No. La prueba no requiere tarjeta ni pago. Para comprar una licencia desde fuera de Perú, el pago se realiza con Mercado Pago."],["¿Tengo que pagar para comenzar?","No. Puedes abrir MinControl y probarlo gratuitamente durante 14 días."],["¿Existe una suscripción mensual?","No. MinControl utiliza licencias de pago único. Después de la prueba puedes elegir una licencia de 120 días, 1 año o permanente."],["¿Puedo usar una licencia en varios dispositivos?","No. Una licencia corresponde a un solo dispositivo."],["¿MinControl funciona en teléfonos?","Sí. Puede utilizarse desde un teléfono mediante un navegador compatible."],["¿Necesito instalar un APK?","No. MinControl puede utilizarse desde el navegador y puede instalarse como aplicación desde un navegador compatible."],["¿Funciona en Windows?","Sí, puede utilizarse desde un navegador moderno en PC o laptop."],["¿Dónde se guardan mis datos?","Los datos de MinControl se almacenan localmente en el dispositivo donde utilizas la aplicación."],["¿MinControl es solamente para minería?","No. Su enfoque principal es minería artesanal y pequeña minería, pero algunas de sus herramientas también pueden ser útiles para construcción, industria, producción y otras operaciones."],["¿Puedo utilizarlo fuera de Perú?","Sí. MinControl está dirigido a usuarios de países de habla hispana y no está limitado a Perú."],["¿En qué moneda se muestran los precios?","Los precios de las licencias en esta página se muestran en soles peruanos (S/). Los equivalentes en dólares son aproximados (1 USD = S/ 3.44)."],["¿Cómo pago si estoy fuera de Perú?","Desde otros países el pago se realiza con Mercado Pago. Escríbenos por WhatsApp y te indicamos los pasos."],["¿Funciona sin internet?","Sí. MinControl funciona 100% offline, sin necesidad de internet."]];
+document.getElementById("faq").innerHTML=Q.map(function(q){return '<details class="group rounded-2xl border border-blue-100 bg-white shadow-sm p-4"><summary class="flex cursor-pointer list-none items-center justify-between gap-3 font-bold text-slate-900">'+q[0]+'<i class="fi fi-rr-angle-small-down text-xl text-blue-600 transition group-open:rotate-180"></i></summary><p class="mt-3 text-slate-600">'+q[1]+'</p></details>'}).join("");
+
+(function(){var t=document.getElementById("track"),n=t.children.length,i=0,d=document.getElementById("dots"),timer;
+for(var k=0;k<n;k++){(function(k){var b=document.createElement("button");b.setAttribute("aria-label","Imagen "+(k+1));b.className="h-2.5 w-2.5 rounded-full transition";b.onclick=function(){go(k);reset()};d.appendChild(b)})(k)}
+function go(x){i=(x+n)%n;t.style.transform="translateX(-"+i*100+"%)";[].forEach.call(d.children,function(b,j){b.className="h-2.5 rounded-full transition "+(j===i?"w-6 bg-blue-600":"w-2.5 bg-blue-200")})}
+function reset(){clearInterval(timer);if(!matchMedia("(prefers-reduced-motion: reduce)").matches)timer=setInterval(function(){go(i+1)},4500)}
+document.getElementById("prev").onclick=function(){go(i-1);reset()};document.getElementById("next").onclick=function(){go(i+1);reset()};
+var sx=null;t.addEventListener("touchstart",function(e){sx=e.touches[0].clientX},{passive:true});t.addEventListener("touchend",function(e){if(sx===null)return;var dx=e.changedTouches[0].clientX-sx;if(Math.abs(dx)>40){go(i+(dx<0?1:-1));reset()}sx=null});
+go(0);reset()})();
+</script>
+</body>
+</html>
