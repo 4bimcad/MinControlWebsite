@@ -3,22 +3,61 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>MinControl — Gestión simple para minería</title>
-<meta name="description" content="MinControl: Dashboard, producción, ingresos, gastos, trabajadores y caja chica en una sola aplicación. Funciona 100% offline. Prueba gratis 14 días.">
-<meta property="og:title" content="MinControl — Gestión simple para minería">
-<meta property="og:description" content="MinControl: Dashboard, producción, ingresos, gastos, trabajadores y caja chica en una sola aplicación. Funciona 100% offline. Prueba gratis 14 días.">
-<meta property="og:image" content="img/og.jpg">
-<meta property="og:url" content="">
+
+<title>MinControl: app para controlar producción, gastos y pagos en minería y otras industrias</title>
+<meta name="description" content="Controla producción, ingresos, gastos y pago a trabajadores desde tu celular, sin internet. App para minería artesanal y pequeña. Prueba gratis 14 días.">
+<link rel="canonical" href="https://mincontrol.infoset.org.pe/">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
 <meta property="og:site_name" content="MinControl">
+<meta property="og:title" content="MinControl: control simple para minería y otras industrias">
+<meta property="og:description" content="Producción, gastos, trabajadores y caja chica en una sola app que funciona sin internet. Prueba gratis 14 días.">
+<meta property="og:url" content="https://mincontrol.infoset.org.pe/">
+<meta property="og:image" content="https://mincontrol.infoset.org.pe/img/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="MinControl en un celular mostrando el panel de producción">
 <meta property="og:locale" content="es_LA">
-<link rel="icon" type="image/png" href="img/logo.png">
-<meta name="theme-color" content="#2563eb">
+
+<!-- Twitter / X -->
+<meta name="twitter:card" content="summary_large_image">
+
+<!-- Iconos -->
+<link rel="icon" type="image/png" href="/img/logo.png">
+<meta name="theme-color" content="#1f2937">
+
+<!-- Fuentes -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+
 <!-- Iconos: Flaticon UIcons (gratis, requieren atribución — ver footer) -->
 <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.6.0/uicons-regular-rounded/css/uicons-regular-rounded.css">
 <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.6.0/uicons-brands/css/uicons-brands.css">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"MinControl","applicationCategory":"BusinessApplication","operatingSystem":"Web","inLanguage":"es","offers":[{"@type":"Offer","name":"Prueba 14 días","price":"0","priceCurrency":"PEN"},{"@type":"Offer","name":"Licencia 120 días","price":"79","priceCurrency":"PEN"},{"@type":"Offer","name":"Licencia 1 año","price":"99","priceCurrency":"PEN"},{"@type":"Offer","name":"Licencia permanente","price":"169","priceCurrency":"PEN"}]}</script>
+
+<!-- Datos estructurados -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "MinControl",
+  "url": "https://mincontrol.infoset.org.pe/",
+  "description": "App offline para registrar producción, gastos, ingresos y pagos a trabajadores en minería y otras industrias.",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Web (Android, iOS, Windows)",
+  "inLanguage": "es",
+  "publisher": { "@type": "Organization", "name": "INFOSET", "url": "https://infoset.org.pe" },
+  "offers": [
+    { "@type": "Offer", "name": "Prueba 14 días", "price": "0", "priceCurrency": "PEN" },
+    { "@type": "Offer", "name": "Licencia 120 días", "price": "79", "priceCurrency": "PEN" },
+    { "@type": "Offer", "name": "Licencia 1 año", "price": "99", "priceCurrency": "PEN" },
+    { "@type": "Offer", "name": "Licencia permanente", "price": "169", "priceCurrency": "PEN" }
+  ]
+}
+</script>
+
+<!-- Tailwind -->
 <script src="https://cdn.tailwindcss.com"></script>
 <script>tailwind.config={theme:{extend:{fontFamily:{sans:['Inter','system-ui','sans-serif']}}}}</script>
 </head>
@@ -177,6 +216,31 @@
  </div>
 </section>
 
+
+ <!-- Bloque para pegar debajo de las tarjetas de precios -->
+  <section class="px-4 py-10">
+    <div class="mx-auto max-w-2xl rounded-xl border border-gray-200 bg-white p-6 shadow-sm sm:p-8">
+      <div class="flex items-start gap-4">
+        <div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-green-800 text-white">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+          </svg>
+        </div>
+ 
+        <div>
+          <h3 class="text-xl font-bold text-gray-800 sm:text-2xl">
+            Prueba antes de comprar, sin riesgo.
+          </h3>
+          <p class="mt-3 leading-relaxed text-gray-600">
+            Por eso ofrecemos <strong class="font-semibold text-gray-800">14 días de prueba gratis</strong>,
+            sin tarjeta y con todas las funciones. Como ya pudiste conocer la app a fondo antes de pagar,
+            las licencias no son reembolsables.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
 <!-- Licencias -->
 <section id="licencias" class="py-16 sm:py-24 scroll-mt-20 bg-blue-50/60">
  <div class="mx-auto max-w-6xl px-5">
@@ -279,7 +343,7 @@ document.getElementById("feat").innerHTML=F.map(function(f){return '<div class="
 
 document.getElementById("paises").innerHTML="Perú,Bolivia,Colombia,Ecuador,Chile,Argentina,México,Guatemala,Honduras,El Salvador,Nicaragua,Costa Rica,Panamá,Paraguay,Uruguay,República Dominicana,España".split(",").map(function(p){return '<span class="rounded-full border border-blue-100 bg-blue-50 px-4 py-1.5 text-sm font-medium text-blue-800">'+p+'</span>'}).join("");
 
-var Q=[["¿Cuánto dura la prueba gratuita?","La prueba gratuita dura 14 días."],["¿Necesito una tarjeta?","No. La prueba no requiere tarjeta ni pago. Para comprar una licencia desde fuera de Perú, el pago se realiza con Mercado Pago."],["¿Tengo que pagar para comenzar?","No. Puedes abrir MinControl y probarlo gratuitamente durante 14 días."],["¿Existe una suscripción mensual?","No. MinControl utiliza licencias de pago único. Después de la prueba puedes elegir una licencia de 120 días, 1 año o permanente."],["¿Puedo usar una licencia en varios dispositivos?","No. Una licencia corresponde a un solo dispositivo."],["¿MinControl funciona en teléfonos?","Sí. Puede utilizarse desde un teléfono mediante un navegador compatible."],["¿Necesito instalar un APK?","No. MinControl puede utilizarse desde el navegador y puede instalarse como aplicación desde un navegador compatible."],["¿Funciona en Windows?","Sí, puede utilizarse desde un navegador moderno en PC o laptop."],["¿Dónde se guardan mis datos?","Los datos de MinControl se almacenan localmente en el dispositivo donde utilizas la aplicación."],["¿MinControl es solamente para minería?","No. Su enfoque principal es minería artesanal y pequeña minería, pero algunas de sus herramientas también pueden ser útiles para construcción, industria, producción y otras operaciones."],["¿Puedo utilizarlo fuera de Perú?","Sí. MinControl está dirigido a usuarios de países de habla hispana y no está limitado a Perú."],["¿En qué moneda se muestran los precios?","Los precios de las licencias en esta página se muestran en soles peruanos (S/). Los equivalentes en dólares son aproximados (1 USD = S/ 3.44)."],["¿Cómo pago si estoy fuera de Perú?","Desde otros países el pago se realiza con Mercado Pago. Escríbenos por WhatsApp y te indicamos los pasos."],["¿Funciona sin internet?","Sí. MinControl funciona 100% offline, sin necesidad de internet."]];
+var Q=[["¿Cuánto dura la prueba gratuita?","La prueba gratuita dura 14 días."],["¿Necesito una tarjeta?","No. La prueba no requiere tarjeta ni pago. Para comprar una licencia desde fuera de Perú, el pago se realiza con Mercado Pago."],["¿Tengo que pagar para comenzar?","No. Puedes abrir MinControl y probarlo gratuitamente durante 14 días."],["¿Existe una suscripción mensual?","No. MinControl utiliza licencias de pago único. Después de la prueba puedes elegir una licencia de 120 días, 1 año o permanente."],["¿Puedo usar una licencia en varios dispositivos?","No. Una licencia corresponde a un solo dispositivo."],["¿MinControl funciona en teléfonos?","Sí. Puede utilizarse desde un teléfono mediante un navegador compatible."],["¿Necesito instalar un APK?","No. MinControl puede utilizarse desde el navegador y puede instalarse como aplicación desde un navegador compatible."],["¿Funciona en Windows?","Sí, puede utilizarse desde un navegador moderno en PC o laptop."],["¿Dónde se guardan mis datos?","Los datos de MinControl se almacenan localmente en el dispositivo donde utilizas la aplicación."],["¿Hay reembolsos?","No. Las licencias son de pago único y no se reembolsan, porque ofrecemos 14 días de prueba gratuita con acceso a todas las funciones. Te recomendamos aprovecharlos antes de comprar. Si tienes dudas sobre la app o tu dispositivo, escríbenos por WhatsApp y con gusto te ayudamos."],["¿MinControl es solamente para minería?","No. Su enfoque principal es minería artesanal y pequeña minería, pero algunas de sus herramientas también pueden ser útiles para construcción, industria, producción y otras operaciones."],["¿Puedo utilizarlo fuera de Perú?","Sí. MinControl está dirigido a usuarios de países de habla hispana y no está limitado a Perú."],["¿En qué moneda se muestran los precios?","Los precios de las licencias en esta página se muestran en soles peruanos (S/). Los equivalentes en dólares son aproximados (1 USD = S/ 3.44)."],["¿Cómo pago si estoy fuera de Perú?","Desde otros países el pago se realiza con Mercado Pago. Escríbenos por WhatsApp y te indicamos los pasos."],["¿Funciona sin internet?","Sí. MinControl funciona 100% offline, sin necesidad de internet."]];
 document.getElementById("faq").innerHTML=Q.map(function(q){return '<details class="group rounded-2xl border border-blue-100 bg-white shadow-sm p-4"><summary class="flex cursor-pointer list-none items-center justify-between gap-3 font-bold text-slate-900">'+q[0]+'<i class="fi fi-rr-angle-small-down text-xl text-blue-600 transition group-open:rotate-180"></i></summary><p class="mt-3 text-slate-600">'+q[1]+'</p></details>'}).join("");
 
 (function(){var t=document.getElementById("track"),n=t.children.length,i=0,d=document.getElementById("dots"),timer;
